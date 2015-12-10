@@ -76,17 +76,22 @@ namespace AdventOfCode
             }
         }
 
-        private void txtInput_KeyUp(object sender, KeyEventArgs e)
+        private string getInputFileName()
         {
             var daynum = _dayList[cbDays.SelectedIndex].GetDayNumber();
             var fileName = "input_day" + daynum.ToString() + ".txt";
-            File.WriteAllText(fileName, txtInput.Text);
+            return fileName;
+        }
+
+        private void txtInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            File.WriteAllText(getInputFileName(), txtInput.Text);
         }
 
         private void cbDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var daynum = _dayList[cbDays.SelectedIndex].GetDayNumber();
-            var fileName = "input_day" + daynum.ToString() + ".txt";
+            var fileName = getInputFileName();
 
             if (File.Exists(fileName))
             {

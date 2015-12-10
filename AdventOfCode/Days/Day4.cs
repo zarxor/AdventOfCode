@@ -18,17 +18,24 @@ namespace AdventOfCode.Days
         {
             string hash = "";
             int i = 0;
+            int startWith5 = 0, startWith6 = 0;
 
             using (MD5 md5Hash = MD5.Create())
             {
-                while (!hash.StartsWith("00000"))
+                while (startWith5 == 0 || startWith6 == 0)
                 {
                     i++;
                     hash = GetMd5Hash(md5Hash, input + i.ToString());
+
+                    if (startWith5 == 0 && hash.StartsWith("00000"))
+                        startWith5 = i;
+
+                    if (startWith6 == 0 && hash.StartsWith("000000"))
+                        startWith6 = i;
                 }
             }
 
-            return new DayResult(i.ToString());
+            return new DayResult(startWith5.ToString(), startWith6.ToString());
         }
 
         static string GetMd5Hash(MD5 md5Hash, string input)
