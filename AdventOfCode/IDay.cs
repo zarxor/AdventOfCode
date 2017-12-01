@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------------------------------------------------------
+//  <copyright file="IDay.cs">
+//      © Johan Boström 2017
+//  </copyright>
+// -------------------------------------------------------------------------------------------------
 
 namespace AdventOfCode
 {
-    interface IDay
+    public interface IDay
     {
-        int GetDayNumber();
+        int Year { get; }
+        int Day { get; }
         DayResult GetResult(string input);
     }
 }

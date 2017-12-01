@@ -1,56 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------------------------------------------------------
+//  <copyright file="Day201504.cs">
+//      © Johan Boström 2017
+//  </copyright>
+// -------------------------------------------------------------------------------------------------
 
 namespace AdventOfCode.Days
 {
-    public class Day4 : IDay
+    using System.Security.Cryptography;
+    using System.Text;
+
+    public class Day201504 : IDay
     {
-        public int GetDayNumber()
-        {
-            return 4;
-        }
+        public int Year => 2015;
+        public int Day => 4;
 
         public DayResult GetResult(string input)
         {
-            string hash = "";
-            int i = 0;
+            var i = 0;
             int startWith5 = 0, startWith6 = 0;
 
-            using (MD5 md5Hash = MD5.Create())
+            using (var md5Hash = MD5.Create())
             {
                 while (startWith5 == 0 || startWith6 == 0)
                 {
                     i++;
-                    hash = GetMd5Hash(md5Hash, input + i.ToString());
+                    var hash = GetMd5Hash(md5Hash, input + i);
 
                     if (startWith5 == 0 && hash.StartsWith("00000"))
+                    {
                         startWith5 = i;
+                    }
 
                     if (startWith6 == 0 && hash.StartsWith("000000"))
+                    {
                         startWith6 = i;
+                    }
                 }
             }
 
             return new DayResult(startWith5.ToString(), startWith6.ToString());
         }
 
-        static string GetMd5Hash(MD5 md5Hash, string input)
+        private static string GetMd5Hash(MD5 md5Hash, string input)
         {
-
             // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
+            var sBuilder = new StringBuilder();
 
             // Loop through each byte of the hashed data 
             // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
+            for (var i = 0; i < data.Length; i++)
             {
                 sBuilder.Append(data[i].ToString("x2"));
             }
