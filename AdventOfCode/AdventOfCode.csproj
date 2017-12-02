@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DayResult.cs" />
+    <Compile Include="Days\Day201702.cs" />
     <Compile Include="Days\Day201701.cs" />
     <Compile Include="Days\Day201504.cs" />
     <Compile Include="Days\Day201503.cs" />
