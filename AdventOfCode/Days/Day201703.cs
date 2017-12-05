@@ -1,8 +1,7 @@
-﻿// -------------------------------------------------------------------------------------------------
-//  <copyright file="Day201703.cs">
-//      © Johan Boström 2017
-//  </copyright>
-// -------------------------------------------------------------------------------------------------
+﻿/*
+ *  Copyright (c) Johan Boström. All rights reserved.
+ *  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+ */
 
 namespace AdventOfCode.Days
 {
@@ -32,7 +31,7 @@ namespace AdventOfCode.Days
             //var sideSize = 1;
             //while (sideSize * sideSize < inputNumber)
             //    sideSize += 2;
-            
+
             var direction = Direction.Right;
             var currentPos = new Point(0, 0);
 
@@ -52,7 +51,6 @@ namespace AdventOfCode.Days
                 i--;
 
                 direction = GetNewDirection(direction);
-
 
                 if (add)
                     steps++;
@@ -107,8 +105,8 @@ namespace AdventOfCode.Days
 
                 add = !add;
             }
-            #endregion
 
+            #endregion Part 2
 
             return new DayResult(result1.ToString(), currentSum.ToString());
         }
@@ -132,12 +130,15 @@ namespace AdventOfCode.Days
                 case Direction.Up:
                     point.Y++;
                     break;
+
                 case Direction.Down:
                     point.Y--;
                     break;
+
                 case Direction.Right:
                     point.X++;
                     break;
+
                 case Direction.Left:
                     point.X--;
                     break;

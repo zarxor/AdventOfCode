@@ -1,8 +1,7 @@
-﻿// -------------------------------------------------------------------------------------------------
-//  <copyright file="Day201504.cs">
-//      © Johan Boström 2017
-//  </copyright>
-// -------------------------------------------------------------------------------------------------
+﻿/*
+ *  Copyright (c) Johan Boström. All rights reserved.
+ *  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+ */
 
 namespace AdventOfCode.Days
 {
@@ -46,12 +45,10 @@ namespace AdventOfCode.Days
             // Convert the input string to a byte array and compute the hash.
             var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
+            // Create a new Stringbuilder to collect the bytes and create a string.
             var sBuilder = new StringBuilder();
 
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
+            // Loop through each byte of the hashed data and format each one as a hexadecimal string.
             for (var i = 0; i < data.Length; i++)
             {
                 sBuilder.Append(data[i].ToString("x2"));

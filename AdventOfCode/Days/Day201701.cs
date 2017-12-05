@@ -1,13 +1,10 @@
-﻿// -------------------------------------------------------------------------------------------------
-//  <copyright file="Day201701.cs">
-//      © Johan Boström 2017
-//  </copyright>
-// -------------------------------------------------------------------------------------------------
+﻿/*
+ *  Copyright (c) Johan Boström. All rights reserved.
+ *  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+ */
 
 namespace AdventOfCode.Days
 {
-    using System.Security.Cryptography;
-
     public class Day201701 : IDay
     {
         public int Year => 2017;
@@ -15,7 +12,7 @@ namespace AdventOfCode.Days
 
         public DayResult GetResult(string input)
         {
-            if (input.Length < 2 || input.Length%2 > 0)
+            if (input.Length < 2 || input.Length % 2 > 0)
                 return new DayResult("ERROR", "ERROR");
 
             var sumOne = 0;

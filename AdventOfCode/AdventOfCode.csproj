@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utils.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,6 +65,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DayResult.cs" />
+    <Compile Include="Days\Day201705.cs" />
     <Compile Include="Days\Day201704.cs" />
     <Compile Include="Days\Day201703.cs" />
     <Compile Include="Days\Day201702.cs" />

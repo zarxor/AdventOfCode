@@ -1,8 +1,7 @@
-﻿// -------------------------------------------------------------------------------------------------
-//  <copyright file="IDay.cs">
-//      © Johan Boström 2017
-//  </copyright>
-// -------------------------------------------------------------------------------------------------
+﻿/*
+ *  Copyright (c) Johan Boström. All rights reserved.
+ *  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+ */
 
 namespace AdventOfCode
 {
@@ -10,6 +9,7 @@ namespace AdventOfCode
     {
         int Year { get; }
         int Day { get; }
+
         DayResult GetResult(string input);
     }
 }
