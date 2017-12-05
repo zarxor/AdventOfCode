@@ -16,7 +16,6 @@ namespace AdventOfCode.Days
 
         public DayResult GetResult(string input)
         {
-
             var rows = input
                 .Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries); // Get all rows
 
