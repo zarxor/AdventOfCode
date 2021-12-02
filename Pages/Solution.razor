@@ -1,0 +1,61 @@
+﻿@page "/solutions/{YearId}/{DayId}"
+@using Models
+@inject IDay[] days;
+
+<div><a href="/">🡸 Back</a></div>
+
+@if (day == null)
+{
+    <h1>No such day</h1>
+}
+else
+{
+    <div>
+    <h1>Solution for day @day.Day - @day.Year</h1>
+    <div class="form-group">
+        <label>Input</label>
+        <textarea rows="10" class="form-control" @bind="InputData"></textarea>
+        <small class="form-text text-muted">Input the data from advent of code</small>
+    </div>
+    <div>
+        <button class="btn btn-primary" @onclick="() => { OutputData = day.GetResult(InputData); }">Calculate</button>
+    </div>
+
+    @if (OutputData != null && OutputData.Length > 0)
+        {
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2 class="h4 card-title">Output</h2>
+                    @for (var i = 0; i < OutputData.Length; i++)
+                    {
+                        <h3 class="h6 card-subtitle text-muted">Output @(i + 1)</h3>
+                        <pre class="p-2 bg-dark text-light"><code>@OutputData[i]</code></pre>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string YearId { get; set; }
+
+    [Parameter]
+    public string DayId { get; set; }
+
+    public string InputData { get; set; }
+
+    public string[] OutputData { get; set; }
+
+    private IDay? day => days.FirstOrDefault(d => d.Year == int.Parse(YearId) && d.Day == int.Parse(DayId));
+
+    protected override async Task OnInitializedAsync()
+    {
+        @* days = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(s => s.GetTypes())
+            .Where(p => typeof(IDay).IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
+            .Select(t => (IDay) Activator.CreateInstance(t))
+            .ToList(); *@
+    }
+}

@@ -1,0 +1,23 @@
+﻿@page "/"
+@using Models
+@inject IDay[] days;
+
+<h1>Solutions</h1>
+@foreach (var daysPerYear in days.GroupBy(d => d.Year))
+{
+    <h2>@daysPerYear.Key</h2>
+    <ul>
+    @foreach (var day in days)
+        {
+            <li><a href="/solutions/@day.Year/@day.Day">Day @day.Day</a></li>
+        }
+    </ul>
+
+}
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+}
