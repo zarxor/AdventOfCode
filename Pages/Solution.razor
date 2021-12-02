@@ -46,16 +46,7 @@ else
 
     public string InputData { get; set; }
 
-    public string[] OutputData { get; set; }
+    public string[]? OutputData { get; set; }
 
     private IDay? day => days.FirstOrDefault(d => d.Year == int.Parse(YearId) && d.Day == int.Parse(DayId));
-
-    protected override async Task OnInitializedAsync()
-    {
-        @* days = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(s => s.GetTypes())
-            .Where(p => typeof(IDay).IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
-            .Select(t => (IDay) Activator.CreateInstance(t))
-            .ToList(); *@
-    }
 }
